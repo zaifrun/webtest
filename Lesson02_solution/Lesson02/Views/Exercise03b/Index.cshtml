@@ -1,0 +1,50 @@
+﻿@using Lesson02.Models;
+@{
+    ViewBag.Title = "Index";
+}
+<p>@Html.ActionLink("Home", "Index", "Home")</p>
+
+<h2>Exercise 3b: Dice Rollers</h2>
+
+@using (Html.BeginForm()) {
+
+    <input type="submit" name="dice1" value="Roll Dice One" />
+    <input type="submit" name="dice2" value="Roll Dice Two" />
+
+}
+
+@if (ViewBag.Dice1 != null && ViewBag.Dice1 != null) {
+    
+    if(ViewBag.Dice1.NumRolls > 0) {
+        <p>
+            Dice one landed on @ViewBag.Dice1.Outcome <br />
+            The dice has been thrown @ViewBag.Dice1.NumRolls times <br />
+            The total score is @ViewBag.Dice1.TotalSum <br />
+            The avarage score is @((ViewBag.Dice1.TotalSum / ViewBag.Dice1.NumRolls).ToString("N"))
+        </p>
+        <p>
+            There has been thrown:
+            <table>
+                @for (int i = 0; i < ViewBag.Dice1.Distribution.Length; i++) {
+                    <tr><td>  @ViewBag.Dice1.Distribution[i] :</td><td>  @(i + 1) </td></tr>
+                }
+            </table>
+        </p>
+    }
+    if(ViewBag.Dice2.NumRolls > 0) {
+        <p>
+            Dice two landed on @ViewBag.Dice2.Outcome <br />
+            The dice has been thrown @ViewBag.Dice2.NumRolls times <br />
+            The total score is @ViewBag.Dice2.TotalSum <br />
+            The avarage score is @((ViewBag.Dice2.TotalSum / ViewBag.Dice2.NumRolls).ToString("N"))
+        </p>
+        <p>
+            There has been thrown:
+            <table>
+                @for (int i = 0; i < ViewBag.Dice2.Distribution.Length; i++) {
+                    <tr><td>  @ViewBag.Dice2.Distribution[i] :</td><td>  @(i + 1) </td></tr>
+                }
+            </table>
+        </p>
+    }
+}

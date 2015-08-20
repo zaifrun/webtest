@@ -1,0 +1,30 @@
+﻿@using Lesson02.Models;
+@{
+    ViewBag.Title = "Index";
+}
+<p>@Html.ActionLink("Home", "Index", "Home")</p>
+
+<h2>Exercise 3: Dice Roller</h2>
+@using (Html.BeginForm()) {
+
+    <input type="submit" value="Roll the Dice" />
+
+}
+
+@if (ViewBag.Dice != null) {
+    <p>
+        The dice landed on @ViewBag.Dice.Outcome <br />
+        The dice has been thrown @ViewBag.Dice.NumRolls times <br />
+        The total score is @ViewBag.Dice.TotalSum <br />
+        The avarage score is @((ViewBag.Dice.TotalSum / ViewBag.Dice.NumRolls).ToString("N"))
+    </p>
+    <p>
+        There has been thrown:
+        <table>
+            @for (int i = 0; i < ViewBag.Dice.Distribution.Length; i++) {
+                <tr><td>  @ViewBag.Dice.Distribution[i] :</td><td>  @(i + 1) </td></tr>
+            }
+        </table>
+    </p>
+
+}

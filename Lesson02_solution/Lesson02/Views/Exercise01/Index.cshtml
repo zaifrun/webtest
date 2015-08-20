@@ -1,0 +1,21 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml"; 
+    ViewBag.Title = "Index";
+}
+<p>@Html.ActionLink("Home", "Index", "Home")</p>
+
+<h2>Exercise 2</h2>
+<h3>@ViewBag.Glass.Name</h3>
+<p>Price: @String.Format("{0:0.00}", ViewBag.Glass.Price)</p>
+<p><img src="content\images\@ViewBag.Glass.ImageUrl" alt="@ViewBag.Glass.Name" /></p>
+<hr/>
+
+<h3>@ViewBag.Bin.Name</h3>
+<p>Price: @String.Format("{0:0.00}", ViewBag.Bin.Price)</p>
+<p><img src="content\images\@ViewBag.Bin.ImageUrl" alt="@ViewBag.Bin.Name" /></p>
+<hr />
+
+<h3>@ViewBag.Knife.Name</h3>
+<p>Price: @String.Format("{0:0.00}", ViewBag.Knife.Price)</p>
+<p><img src="content\images\@ViewBag.Knife.ImageUrl" alt="@ViewBag.Glass.Name" /></p>
+<hr />

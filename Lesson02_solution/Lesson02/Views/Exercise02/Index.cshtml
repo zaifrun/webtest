@@ -1,0 +1,56 @@
+﻿@using Lesson02.Models;
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml"; 
+    ViewBag.Title = "Index";
+}
+
+<p>@Html.ActionLink("Home", "Index", "Home")</p>
+<h2>Exercise 2</h2>
+
+@helper RenderPerson(Person person) {
+    <p>
+        @person.Firstname  @person.Lastname <br />
+        @person.Adress <br />
+        @person.Zip @person.City 
+    </p>
+
+}
+
+@helper RenderPhoneList(Person person) {
+    <span>
+        @person.Firstname  @person.Lastname 
+        (@string.Join(", ", @person.PhoneNumbers))
+    </span>
+}
+
+
+
+
+<h2>Person list</h2>
+    <!-- example without use of the RenderPerson view method
+        <p>
+            @ViewBag.Brother.Firstname  @ViewBag.Brother.Lastname <br />
+            @ViewBag.Brother.Adress <br />
+            @ViewBag.Brother.Zip @ViewBag.Brother.City 
+        </p>
+
+        <p>
+            @ViewBag.Sister.Firstname  @ViewBag.Sister.Lastname <br />
+            @ViewBag.Sister.Adress <br />
+            @ViewBag.Sister.Zip @ViewBag.Sister.City
+        </p>
+    -->
+
+    @RenderPerson(ViewBag.Brother)
+    @RenderPerson(ViewBag.Sister)
+
+
+<h2>Phone list</h2>
+    @RenderPhoneList(ViewBag.Brother) <br />
+    @RenderPhoneList(ViewBag.Sister)
+
+<h2>Age example </h2>
+    <p>@ViewBag.Sister.Firstname  @ViewBag.Sister.Lastname is @ViewBag.Sister.Age years old</p>
+
+
